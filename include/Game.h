@@ -9,6 +9,9 @@ public:
   void Run();
   void Update();
   void Draw();
+  std::string GetWindowName() const;
+  int GetWindowHeight() const;
+  int GetWindowWidth() const;
 private:
   int mWindowWidth;
   int mWindowHeight;

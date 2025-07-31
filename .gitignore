@@ -25,3 +25,5 @@ DerivedData/
 xcuserdata/
 
 *.moved-aside
+
+CMakeSettings.json
