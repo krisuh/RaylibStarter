@@ -42,6 +42,18 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
     APP_NAME="${PROJECT_NAME}"
 )
 
+# Resources directory
+set(ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/resources")
+set(OUTPUT_ASSETS_DIR "${CMAKE_CURRENT_BINARY_DIR}/resources")
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_directory
+  ${ASSETS_DIR} ${OUTPUT_ASSETS_DIR}
+)
+
+install(TARGETS ${PROJECT_NAME})
+install(DIRECTORY resources DESTINATION .)
+
+
 # Test executable
 file(GLOB TEST_FILES tests/*.cpp)
 add_executable(tests ${TEST_FILES})

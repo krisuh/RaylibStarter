@@ -2,6 +2,14 @@
 
 This is a simple CMake project basis including Raylib (https://www.raylib.com/). Download this and then change the root directory name in order to name your project.
 
+## Project structure
+
+The following list describes the purposes of each directory
+
+- `src` This is where you add your source files with `*.cpp` suffix.
+- `include` Add your header (`*.h`) files here
+- `tests` Add your unit tests here.
+
 ## How to build
 
 ### Windows

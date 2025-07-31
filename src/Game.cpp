@@ -9,15 +9,20 @@ Game::~Game()
 
 void Game::Run()
 {
+  SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
   InitWindow(mWindowWidth, mWindowHeight, mWindowName.c_str());
+  Texture2D face = LoadTexture("resources/face.png");
   while (!WindowShouldClose())
   {
     BeginDrawing();
     ClearBackground(BLACK);
     Draw();
+    DrawTexture(face, mWindowWidth / 2, mWindowHeight / 2 + 20, WHITE);
     EndDrawing();
     Update();
   }
+  UnloadTexture(face);
+  CloseWindow();
 }
 
 void Game::Draw()
