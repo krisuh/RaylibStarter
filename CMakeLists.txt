@@ -26,6 +26,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
+# Fetch glm
+FetchContent_Declare(
+    glm
+    GIT_REPOSITORY https://github.com/g-truc/glm.git
+    GIT_TAG 1.0.1
+)
+FetchContent_MakeAvailable(glm)
+
 # Game library and source files
 set(PROJECT_LIB "${PROJECT_NAME}_lib")
 file(GLOB_RECURSE EXECUTABLE_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.cpp")
@@ -33,7 +41,7 @@ file(GLOB_RECURSE EXECUTABLE_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR
 list(REMOVE_ITEM EXECUTABLE_SOURCES "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp")
 add_library(${PROJECT_LIB} ${EXECUTABLE_SOURCES})
 target_include_directories(${PROJECT_LIB} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(${PROJECT_LIB} PUBLIC raylib)
+target_link_libraries(${PROJECT_LIB} PUBLIC raylib glm)
 
 # Main executable
 add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_LIST_DIR}/src/main.cpp")
