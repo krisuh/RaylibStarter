@@ -63,7 +63,7 @@ install(DIRECTORY resources DESTINATION .)
 
 
 # Test executable
-file(GLOB TEST_FILES tests/*.cpp)
+file(GLOB_RECURSE TEST_FILES CONFIGURE_DEPENDS tests/*.cpp)
 add_executable(tests ${TEST_FILES})
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain ${PROJECT_LIB})
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
